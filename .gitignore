@@ -1,2 +1,4 @@
 /.env
 /node_modules
+/conflig/public.key
+/conflig/private.key

@@ -24,7 +24,7 @@ export async function handelRespone(data, request, respone, next) {
     if (statusCode !== OK && statusCode !== CREATE && statusCode !== NO_CONTENT) {
         respone.status(statusCode || BAD_REQUEST).send({
             code: statusCode,
-            error: dat.data ? data.data : data.error,
+            error: data.data ? data.data : data.error,
             description: data.description
         });
     } else {
