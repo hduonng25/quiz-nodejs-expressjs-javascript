@@ -22,6 +22,11 @@ export const Users = mongoose.Schema({
         required: true
     },
 
+    email: {
+        type: String,
+        required: false
+    },
+
     password: {
         type: String,
         required: true

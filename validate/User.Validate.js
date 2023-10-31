@@ -15,4 +15,15 @@ export function checkCreate(request, respone, next) {
     if (role_check) return next(role_check);
 
     return next();
+};
+
+export function checkUpdate(request, respone, next) {
+    const {name, role} = request.body;
+    let check_name = data_not_found(name, "name");
+    if (check_name) return next(check_name);
+
+    let check_role = data_not_found(role, "role");
+    if (check_role) return next(check_role);
+
+    return next();
 }
