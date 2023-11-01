@@ -5,6 +5,7 @@ import {error, success} from "../respone/Respone.js";
 import {senMailNumberRanDom} from "../mail/Send.Mail.js";
 import confligMail from "../mail/Conflig.Mail.js";
 import {genToken} from "../jwt/Token.js";
+import Quiz from "../models/Quiz.js";
 
 export function ranDom() {
     const length = 6;
@@ -84,3 +85,11 @@ export async function changePass(id_user, password) {
     return success("Change password successfuly");
 };
 
+export async function findQuizUser(id_user) {
+    const user = await users.findOne({id: id_user});
+    const id_Quiz = user.id_Quiz;
+    for (const quizs of id_Quiz) {
+        const quiz_list = await Quiz.findOne({id: quizs.id});
+        return success(quiz_list);
+    }
+}

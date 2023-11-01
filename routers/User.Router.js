@@ -5,7 +5,7 @@ import {
     create_user,
     delete_user,
     findByEmail,
-    findByID,
+    findByID, findQuizUser,
     list_user, ranDom,
     update_user
 } from "../controller/User.Controller.js";
@@ -58,6 +58,12 @@ router.put("/change-pass", async (request, response, next) => {
     const {id_user, password} = request.body;
     const change = await changePass(id_user, password);
     next(change);
+});
+
+router.get("/quiz", async (request, response, next) => {
+    const {id_user} = request.query;
+    const quiz = await findQuizUser(id_user);
+    next(quiz);
 });
 
 export default router;
