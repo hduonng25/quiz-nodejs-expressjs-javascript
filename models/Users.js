@@ -43,7 +43,31 @@ export const Users = mongoose.Schema({
         required: false
     },
 
-    id_Course: [
+    fieldOfStudy: [
+        {
+            name: {
+                type: String,
+                required: false
+            },
+
+            start_date: {
+                type: Date,
+                required: false
+            },
+
+            end_date: {
+                type: Date,
+                required: false
+            }
+        }
+    ],
+
+    year: {
+        type: Number,
+        required: false
+    },
+
+    id_Subject: [
         {
             _id: false,
             id: {
@@ -51,7 +75,7 @@ export const Users = mongoose.Schema({
                 required: true
             },
 
-            name_Course: {
+            name_Subject: {
                 type: String,
                 required: false
             },

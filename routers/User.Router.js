@@ -1,13 +1,6 @@
 import express from "express";
 import {
-    changePass,
-    checkNumber,
-    create_user,
-    delete_user,
-    findByEmail,
-    findByID, findQuizUser,
-    list_user, ranDom,
-    update_user
+    changePass, checkNumber, create_user, delete_user, findByEmail, findByID, findQuizUser, list_user, update_user
 } from "../controller/User.Controller.js";
 import {checkCreate, checkUpdate} from "../validate/User.Validate.js";
 

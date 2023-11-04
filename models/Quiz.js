@@ -11,6 +11,11 @@ export const Quizs = mongoose.Schema({
         required: false
     },
 
+    id_Subject: {
+        type: String,
+        required: false
+    },
+
     questions: [
         {
             _id: false,
@@ -30,6 +35,11 @@ export const Quizs = mongoose.Schema({
                     id: {
                         type: String,
                         required: true
+                    },
+
+                    id_questions: {
+                        type: String,
+                        required: false
                     },
 
                     name: {
