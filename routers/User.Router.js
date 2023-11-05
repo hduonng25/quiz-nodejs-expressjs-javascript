@@ -1,6 +1,16 @@
 import express from "express";
 import {
-    changePass, checkNumber, create_user, delete_user, findByEmail, findByID, findQuizUser, list_user, update_user
+    applySubject,
+    changePass,
+    checkNumber,
+    create_user,
+    delete_user,
+    findByEmail,
+    findByID,
+    findQuizUser,
+    getQuizBySubject,
+    list_user,
+    update_user
 } from "../controller/User.Controller.js";
 import {checkCreate, checkUpdate} from "../validate/User.Validate.js";
 
@@ -57,6 +67,18 @@ router.get("/quiz", async (request, response, next) => {
     const {id_user} = request.query;
     const quiz = await findQuizUser(id_user);
     next(quiz);
+});
+
+router.post("/apply-subject", async (request, response, next) => {
+    const {id_user, id_subject} = request.body;
+    const apply = await applySubject(id_user, id_subject);
+    next(apply);
+});
+
+router.get("/grade", async (request, response, next) => {
+    const {id_user, id_subject} = request.body;
+    const grade = await getQuizBySubject(id_user, id_subject);
+    next(grade);
 });
 
 export default router;

@@ -6,6 +6,8 @@ import {senMailNumberRanDom} from "../mail/Send.Mail.js";
 import confligMail from "../mail/Conflig.Mail.js";
 import {genToken} from "../jwt/Token.js";
 import Quiz from "../models/Quiz.js";
+import subject from "../models/Subject.js";
+import quiz from "../models/Quiz.js";
 
 export function ranDom() {
     const length = 6;
@@ -92,4 +94,31 @@ export async function findQuizUser(id_user) {
         const quiz_list = await Quiz.findOne({id: quizs.id});
         return success(quiz_list);
     }
-}
+};
+
+export async function applySubject(id_user, id_subject) {
+    const subjects = await subject.findOne({id: id_subject});
+    const user = await users.findOneAndUpdate(
+        {id: id_user},
+        {
+            $push: {
+                id_Subject: {
+                    id: id_subject,
+                    name_Subject: subjects.name,
+                    apply_Date: new Date()
+                }
+            }
+        },
+        {new: true}
+    )
+    return success(user);
+};
+
+export async function getQuizBySubject(id_user, id_subject) {
+    const user = await users.findOne({id: id_user});
+    const quizBySubject = await quiz.find({id_Subject: id_subject});
+    for (const idQuiz of quizBySubject){
+        const grade_quizUser = await user.id_Quiz.find((details)=> details.id === idQuiz.id);
+        return success(grade_quizUser);
+    }
+};
