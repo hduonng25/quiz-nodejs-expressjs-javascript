@@ -8,7 +8,7 @@ import {checkToken} from "../validate/Token.Check.js";
 
 const router = express.Router();
 
-router.use('/user', checkToken, UserAPI);
+router.use('/user', UserAPI);
 router.use('/auth', AuthAPI);
 router.use('/subject', checkToken, SubjectAPI);
 router.use('/quiz', checkToken, QuizAPI);
