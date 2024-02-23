@@ -1,4 +1,6 @@
 STARTED QUIZ
 ______________
-- Dự án cá nhân
-- Dự án được đẩy lên đã ẩn những file quan trọng như private key, public key, .env 
+Dự án cá nhân làm quiz, hiển thị những khoá học, quiz theo người học, xem lại những quiz đã làm, tổng điểm
+
+Những người tham gia:
+- Đỗ Hồng Dương
